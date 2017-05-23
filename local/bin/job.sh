@@ -12,10 +12,10 @@ svg2png () {
 case "$src" in
  *.asm) nasm -f elf64 -o a.o "$src" &&  ld -s -o a.out a.o && ./a.out ;;
  *.bc) bc -l "$src" ;;
- *.bf|.b) beef -d "$src" ;;
- *.c) gcc "$src" && ./a.out ;;
+ *.bf|*.b) beef -d "$src" ;;
  *.cpp) clang++ "$src" && ./a.out ;;
  *.cs) mcs "$src" && mono "${src%.cs}.exe" ;;
+ *.c) gcc "$src" && ./a.out ;;
  *.dot) dot -T png -o "$out_png" "$src" ;;
  *.f|*.f90|*.f95) gfortran "$src" && ./a.out ;;
  *.go) go run "$src" ;;
@@ -26,10 +26,10 @@ case "$src" in
  *.lua) lua5.3 "$src" ;;
  *.ml) ocaml "$src" ;;
  *.php) php "$src" ;;
- *.pl) perl "$src" ;;
  *.plt|*.gnuplot|*.gpi) gnuplot -e "set terminal png size 800,800; set output 'out.png'" "$src" ;;
  *.py2) python2 "$src" ;;
  *.py3|*.py) python3 "$src" ;;
+ *.pl) perl "$src" ;;
  *.rb) ruby "$src" ;;
  *.scm) guile -s "$src" 2>/dev/null ;;
  *.sh|*.bash) bash "$src" ;;
