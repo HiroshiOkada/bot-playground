@@ -1,0 +1,6 @@
+digraph g {
+  "hello" -> "world";
+  "goodby" -> "human";
+  "hello" -> "human";
+  "goodby" -> "world";
+}
