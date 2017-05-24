@@ -1,6 +1,6 @@
 digraph g {
+  "こんにちは" -> "世界";
   "hello" -> "world";
-  "goodby" -> "human";
-  "hello" -> "human";
-  "goodby" -> "world";
+  "こんにちは" -> "world";
+  "hello" -> "世界";
 }

@@ -2,7 +2,7 @@ FROM ubuntu:17.04
 
 RUN apt-get update
 
-RUN apt-get install -y bash beef bc bison curl clang clisp coreutils erlang fonts-noto flex g++ \
+RUN apt-get install -y bash beef bc bison curl clang clisp coreutils erlang flex g++ \
                        gawk gfortran ghc git \
                        gnuplot golang graphviz guile imagemagick inkscape \
                        lua5.3 m4 make mono-mcs \
@@ -17,12 +17,7 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - &&\
     npm install -g typescript
 
 # ubuntu's phantomjs require X
-RUN apt-get install -y fontconfig &&\
-    cd /tmp/ &&\
-    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 &&\
-    tar jxf phantomjs-2.1.1-linux-x86_64.tar.bz2 &&\
-    cp phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin &&\
-    rm -rf /tmp/phantomjs*
+RUN apt-get install -y fonts-takao-gothic fontconfig phantomjs xvfb
 
 COPY ./local /usr/local
 COPY bashrc /home/bot/.bashrc
@@ -30,6 +25,8 @@ COPY bashrc /home/bot/.bashrc
 RUN apt-get -y purge wget curl && apt-get -y autoremove && apt-get clean && rm -rf /tmp/*
 
 RUN useradd bot && chown -R bot:bot /home/bot
+
+RUN echo 'set terminal png font "/usr/share/fonts/truetype/takao-gothic/TakaoPGothic.ttf"' > /home/bot/.gnuplot
 
 USER bot
 

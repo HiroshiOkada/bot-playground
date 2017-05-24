@@ -37,7 +37,7 @@ case "$src" in
  *.svg) svg2png "$src" ;;
  *.ts) tsc "$src" && node "${src%.ts}".js ;;
  *.zsh) zsh "$src" ;;
- *.html|*.htm) phantomjs /usr/local/etc/render.js "$src" ;;
+ *.html|*.htm) LANG=ja_JP.UTF-8 xvfb-run phantomjs /usr/local/etc/render.js "$src" ;;
 
  script) cp "$src" /tmp/
     rm -f "$src"
