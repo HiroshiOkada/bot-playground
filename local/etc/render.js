@@ -26,7 +26,7 @@ page.onAlert = function(msg) {
 };
 
 page.onConsoleMessage = function(msg) {
-  console.log(msg);
+  console.log('CONSOLE:' + msg);
 };
 
 page.onLoadFinished = function(status) {
