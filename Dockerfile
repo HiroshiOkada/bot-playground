@@ -4,12 +4,12 @@ RUN apt-get update
 
 RUN apt-get install -y bash beef bc bison curl clang clisp coreutils erlang flex g++ \
                        gawk gfortran ghc git \
-                       gnuplot golang graphviz guile imagemagick inkscape \
+                       gnuplot golang graphviz guile imagemagick inkscape kbtin \
                        lua5.3 m4 make mono-mcs \
                        nasm ocaml-nox \
                        openjdk-9-jdk perl php7.0 python python3 python-imageio python3-imageio \
                        ruby rustc scala sqlite \
-                       jq vim-nox wget zip zsh
+                       jq vim-nox zip zsh
 
 # ubuntu's nodejs is too old
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - &&\
@@ -22,7 +22,7 @@ RUN apt-get install -y fonts-takao-gothic fontconfig phantomjs xvfb
 COPY ./local /usr/local
 COPY bashrc /home/bot/.bashrc
 
-RUN apt-get -y purge wget curl && apt-get -y autoremove && apt-get clean && rm -rf /tmp/*
+RUN apt-get -y purge curl && apt-get -y autoremove && apt-get clean && rm -rf /tmp/*
 
 RUN useradd bot && chown -R bot:bot /home/bot
 

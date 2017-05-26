@@ -36,7 +36,7 @@ case "$src" in
  *.sql) sqlite3 "${src%.sql}.db" < "$src" ;;
  *.svg) svg2png "$src" ;;
  *.ts) tsc "$src" && node "${src%.ts}".js ;;
- *.vim) LANG=ja_JP.UTF-8 vim -X -N -u NONE -i NONE --not-a-term --cmd "source $src | qall!" ;;
+ *.vim) LANG=ja_JP.UTF-8 vim -X -N -u NONE -i NONE --not-a-term --cmd "source $src | qall!" | ansi2txt ;;
  *.zsh) zsh "$src" ;;
  *.html|*.htm) LANG=ja_JP.UTF-8 xvfb-run phantomjs /usr/local/etc/render.js "$src" 2>/dev/null | grep -P '^[A-Z]+:' | sed -e 's/^CONSOLE://' ;;
 
